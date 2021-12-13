@@ -166,6 +166,7 @@ async function insertStudent(student) {
     rclient = await getRConnection();
     let sKey = "student:" + student.studentID;
     const addedStudent = await rclient.hSet(sKey, student);
+    await rclient.SADD("studentList", student.studentID);
     return addedStudent;
   } finally {
     rclient.quit();
@@ -186,7 +187,18 @@ async function deleteStudentIDFromCourseID(courseID, studentID) {
   
 }
 
+async function getCoachByID(courseID) {
+  console.log("getCoachByID", courseID);
 
+  try {
+    rclient = await getRConnection();
+    let coachKey = "course:" + courseID + ":coach";
+    const coach = await rclient.hGetAll(coachKey);
+    return coach;
+  } finally {
+    rclient.quit();
+  }
+}
 
 
 
@@ -200,4 +212,5 @@ module.exports.getStudentsByCourseID = getStudentsByCourseID;
 module.exports.addStudentIDToCourseID = addStudentIDToCourseID;
 module.exports.insertStudent = insertStudent;
 module.exports.deleteStudentIDFromCourseID = deleteStudentIDFromCourseID;
+module.exports.getCoachByID = getCoachByID;
 //module.exports.search = search;

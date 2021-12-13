@@ -185,10 +185,11 @@ router.get("/courses/:courseID/schedule", async (req, res, next) => {
 
     let course = await myDb.getCourseByID(courseID);
     let students = await myDb.getStudentsByCourseID(courseID);
-    //course = course[0];
+    let coach = await myDb.getCoachByID(courseID);
     console.log("schedule course", {
       course,
       students,
+      coach,
       msg,
     });
 
@@ -196,6 +197,7 @@ router.get("/courses/:courseID/schedule", async (req, res, next) => {
     res.render("./pages/scheduleCourse", {
       course,
       students,
+      coach,
       msg,
     });
   } catch (err) {
