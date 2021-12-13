@@ -49,9 +49,11 @@ Chang Guan completed the Project3 independantly.
 
 ```
 npm install
-
+```
+```
 npm install redis
-
+```
+```
 npm install mongo
 ```
 
