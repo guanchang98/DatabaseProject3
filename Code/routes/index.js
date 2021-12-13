@@ -89,13 +89,12 @@ router.post("/courses/:courseID/addStudent", async (req, res, next) => {
     let updateResult = await myDb.addStudentIDToCourseID(courseID, studentID);
     console.log("addStudentIDToCourseID", updateResult);
 
-    if (updateResult) {
+    console.log(updateResult);
+    if (updateResult == 1) {
       res.redirect(`/courses/${courseID}/edit?msg=Student added`);
     } else {
-      res.redirect(`/courses/${courseID}/edit?msg=Error adding student`);
+      res.redirect(`/courses/${courseID}/edit?msg=Student not existed`);
     }
-
-    res.redirect(`/courses/${courseID}/edit?msg=Student Added`);
   } catch (err) {
     next(err);
   }
@@ -214,7 +213,7 @@ router.get("/courses/:courseID/removeStudent/:studentID", async (req, res, next)
     console.log("delete", deleteResult);
 
     if (deleteResult) {
-      res.redirect("/courses/?msg=Deleted");
+      res.redirect("/courses/?msg=Student Deleted");
     } else {
       res.redirect("/courses/?msg=Error Deleting");
     }

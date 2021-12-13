@@ -23,6 +23,7 @@ async function load() {
     for (let course of courses) {
         let cID = await clientRedis.get("courseID");
         await clientRedis.ZADD("courseList", {score: -cID, value: cID});
+        
         console.log("course list updated");
         let courseKey = "course:" + cID;
         let coachKey = "course:" + cID + ":coach";
@@ -54,6 +55,7 @@ async function load() {
 
     for (let student of students) {
         let studentKey = "student:" + student.studentID + "";
+        await clientRedis.SADD("studentList", student.studentID + "");
         await clientRedis.hSet(studentKey,{
             "studentID": student.studentID,
             "firstName": student.firstName,

@@ -149,9 +149,11 @@ async function addStudentIDToCourseID(courseID, studentID) {
   
   try {
     rclient = await getRConnection();
-    let sKey = "course:" + courseID + ":students";
-    const updatedCourse = await rclient.SADD(sKey, studentID);
-    return updatedCourse;
+    let cKey = "course:" + courseID + ":students";
+    let add = await rclient.SISMEMBER("studentList", studentID);
+    console.log(add);
+    if (add == 1) await rclient.SADD(cKey, studentID);
+    return add;
   } finally {
     rclient.quit();
   }
@@ -176,8 +178,8 @@ async function deleteStudentIDFromCourseID(courseID, studentID) {
   try {
     rclient = await getRConnection();
     let sKey = "course:" + courseID + ":students";
-    const res = await rclient.SREM(sKey, studentID);
-    return res;
+    const delStudent = await rclient.SREM(sKey, studentID);
+    return delStudent;
   } finally {
     rclient.quit();
   }
