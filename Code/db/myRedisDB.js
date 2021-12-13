@@ -151,7 +151,7 @@ async function addStudentIDToCourseID(courseID, studentID) {
     rclient = await getRConnection();
     let cKey = "course:" + courseID + ":students";
     let add = await rclient.SISMEMBER("studentList", studentID);
-    console.log(add);
+    //console.log(add);
     if (add == 1) await rclient.SADD(cKey, studentID);
     return add;
   } finally {
