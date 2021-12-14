@@ -68,6 +68,6 @@ node load.js
 npm start
 ```
 
-4) Point your browser to http://locahost:3000
+5) Point your browser to http://locahost:3000
 
 
