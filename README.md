@@ -57,8 +57,12 @@ npm install redis
 npm install mongo
 ```
 
+3) Load data from MongoDB to Redis
+```
+node load.js
+```
 
-3) Start the server
+4) Start the server
 
 ```
 npm start
