@@ -1,6 +1,6 @@
 # Project3
 
-# DrivingSchoolSchedulingSystem
+# Driving School Scheduling System
 An Application Using Node + Express + Redis + EJS implementing a Driving School Scheduling System for both students and managers.
 
 ## 1. Requirements
@@ -15,7 +15,7 @@ Design a scheduling application for a driving school.
 	
 ## 3. Database
 
-### (1) Unzip the file 4.dump.zip in folder 4.Database
+### (1) Unzip the file dump.zip in folder 3.Database
 
 ### (2) Find the location of folder dump
 
