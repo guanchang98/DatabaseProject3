@@ -15,6 +15,8 @@ Design a scheduling application for a driving school.
 	
 ## 3. Database
 
+We need to restore the data to MongoDB like Project 2. Then we use a load.js file to store all the data from MongoDB to Redis in suitable data structure. In 3.Database folder, we hava a description of all data structure we used in Redis. And the dump.zip file need to do as follows.
+
 ### (1) Unzip the file dump.zip in folder 3.Database
 
 ### (2) Find the location of folder dump
